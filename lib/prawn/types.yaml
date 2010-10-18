@@ -2,6 +2,11 @@
 # prawns' basic unit is PostScript-Point        
 # 72 points per inch
 #
+# 1 mm = 25.4 inches
+#
+# 1 mm = 2.83464567 PostScript points
+
+
 Avery5160:
   left_margin: 15.822
   right_margin: 15.822
@@ -9,6 +14,14 @@ Avery5160:
   rows: 10
   column_gutter: 10
   row_gutter: 0
+Niceday181931:
+  left_margin: 17.007874
+  right_margin: 17.007874
+  columns: 3
+  rows: 8
+  column_gutter: 3
+  row_gutter: 0
+  page_size: A4
 TEST:
   left_margin: 123
   right_margin: 789

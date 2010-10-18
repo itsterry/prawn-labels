@@ -23,9 +23,11 @@ module Prawn
       unless @type = types[options[:type]]
         raise "Label Type Unknown '#{options[:type]}'" 
       end
-      
+
       @document = Document.new  :left_margin  => type["left_margin"], 
-                                :right_margin => type["right_margin"]
+                                :right_margin => type["right_margin"],
+                                :page_size=>type["page_size"]
+
                                 
       generate_grid @type
       
@@ -72,7 +74,11 @@ module Prawn
 
       b = @document.grid(p.first, p.last)
       @document.bounding_box b.top_left, :width => b.width, :height => b.height do
-        yield(@document, record)
+        if record.is_a?(Array) and not record.empty?
+          record.each{|r| yield(@document, r)}
+        else
+          yield(@document, record)
+        end
       end
     end
   end
